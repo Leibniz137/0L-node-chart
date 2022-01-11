@@ -4,9 +4,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
   && apt-get install -y curl git make sudo \
-  && git clone https://github.com/OLSF/libra.git
+  && git clone https://github.com/0o-de-lally/libra.git
 
 RUN cd libra/ \
+  && git checkout update-val-cfg \
   && echo 'DEBIAN_FRONTEND="noninteractive"' >> /etc/environment \
   && make deps \
   && echo "source $HOME/.cargo/env" >> ~/.bashrc
